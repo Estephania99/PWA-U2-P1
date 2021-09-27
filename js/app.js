@@ -2,7 +2,7 @@ console.log('Hola mundo desde app.js');
 
 
 let url = window.location.href;
-let swDirectory = "/miRepositoio/sw.js"; //miRepositoio
+let swDirectory = "/PWA-U2-P1/sw.js"; //miRepositoio
 
 // Preguntamos si el navegador y/o el sitio dispone de SW
 if(navigator.serviceWorker){
