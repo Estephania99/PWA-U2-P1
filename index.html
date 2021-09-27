@@ -1,37 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/page.css" />
 
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json" />
 
     <title>Hello, world!</title>
   </head>
   <body>
-      <!--iniciar con http-server-->
-      <div class="container">
-        <h1 class="text-center">Mi primer pwa</h1>
-        <div class="row">
-          <div class="col-12 text-center">
-            <img class="img-fluid" src="images/perrito.jpg" alt="Perrito">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Officia deleniti, nobis eligendi dolorum fuga consequuntur 
-            maiores non, incidunt esse aliquam perferendis architecto 
-            debitis commodi cum impedit nisi quaerat rem sequi.
-          </div>
+    <!--iniciar con http-server-->
+    <div class="container">
+      <h1 class="text-center">Mi primer pwa</h1>
+      <div class="row">
+        <div class="col-12 text-center">
+          <img class="img-fluid" src="images/perrito.jpg" alt="Perrito" />
         </div>
       </div>
-    
+      <div class="row">
+        <div class="col-12">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
+          deleniti, nobis eligendi dolorum fuga consequuntur maiores non,
+          incidunt esse aliquam perferendis architecto debitis commodi cum
+          impedit nisi quaerat rem sequi.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center" id="nuevo">
+          <button id="btn" type="button" class="btn btn-outline-success">
+            Presiona el botón
+          </button>
+        </div>
+      </div>
+      <script>
+        document.getElementById("btn").addEventListener("click", () => {
+          //navigator.serviceWorker.controller.postMessage('click');
+          fetch("https://reqres.in/api/users?page=2")
+            .then((resp) => resp.json())
+            .then((respJson) => {
+              console.log(respJson);
+              const para = document.createElement("p");
+              const node = document.createTextNode(respJson.mensaje);
+              para.appendChild(node);
+              const element = document.getElementById("nuevo");
+              element.appendChild(para);
+            });
+        });
+      </script>
+    </div>
+
     <script src="js/app.js"></script>
   </body>
 </html>

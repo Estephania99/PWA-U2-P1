@@ -22,9 +22,7 @@ self.addEventListener('fetch',(event)=>{
         
         console.log('Es una imagen');
         event.respondWith(newResp);
-    }
-
-    
+    }  
 
     if(event.request.url.includes('page.css')){
         let newResponse = new Response(`body{
@@ -37,4 +35,24 @@ self.addEventListener('fetch',(event)=>{
         });
         event.respondWith(newResponse);
     }
-})
+
+    if(event.request.url.includes('reqres')){
+        let newResp = new Response(JSON.stringify({
+            mensaje:"Este es el mensaje interceptado",
+        }), {
+            headers: {'Content-Type': 'application/json'}
+          });
+        console.log(event.request);
+        event.respondWith(newResp);
+    }
+});
+
+/*self.addEventListener('message', (event) => {
+    if(event.data == 'click'){
+        fetch("https://reqres.in/api/users?page=2")
+        .then((resp) => resp.json())
+        .then((respJson) => {
+          console.log(respJson);
+        });
+    }
+  });*/
