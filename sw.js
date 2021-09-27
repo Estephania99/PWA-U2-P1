@@ -1,5 +1,7 @@
 //console.log('WS: Hola mundo :) ya es tarde ');
 
+
+
 self.addEventListener('install',(event)=>{
     console.log('SW: Instalado');
 });
